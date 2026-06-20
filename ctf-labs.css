@@ -207,6 +207,15 @@
 }
 .read-btn:hover { background: rgba(0, 255, 136, 0.12); border-color: rgba(0, 255, 136, 0.3); }
 
+.load-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--faint);
+  padding: 4rem 0;
+}
+
 .empty-state {
   grid-column: 1 / -1;
   display: flex;
@@ -300,6 +309,21 @@
 
 .modal-body { padding: 1.8rem; font-size: 0.91rem; color: var(--muted); line-height: 1.85; }
 
+.writeup-content h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 1.6rem 0 0.6rem;
+}
+
+.writeup-content h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.92rem;
+  color: var(--green);
+  margin: 1.4rem 0 0.5rem;
+}
+.writeup-content h2::before { content: '# '; color: rgba(0, 255, 136, 0.35); }
+
 .writeup-content h3 {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
@@ -307,6 +331,9 @@
   margin: 1.4rem 0 0.5rem;
 }
 .writeup-content h3::before { content: '## '; color: rgba(0, 255, 136, 0.35); }
+
+.writeup-content strong { color: var(--text); }
+.writeup-content em     { font-style: italic; }
 .writeup-content p          { margin-bottom: 0.8rem; }
 
 .writeup-content code {

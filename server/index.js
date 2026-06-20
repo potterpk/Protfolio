@@ -38,7 +38,9 @@ function rateLimit(max, windowMs = 60_000) {
   };
 }
 
-app.use(cors({ origin: process.env.ALLOWED_ORIGIN || '*' }));
+// frontend and API are on the same server, so same-origin requests don't need CORS at all.
+// set ALLOWED_ORIGIN in .env if you ever split them (CDN, separate domain, etc.)
+app.use(cors({ origin: process.env.ALLOWED_ORIGIN || false }));
 app.use(express.json({ limit: '64kb' }));
 app.use(rateLimit(120));
 

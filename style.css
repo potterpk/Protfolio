@@ -398,7 +398,7 @@ h2 {
   background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
-  transition: border-color 0.22s, background 0.22s;
+  transition: border-color 0.2s, background 0.2s;
 }
 .stat-box:hover { border-color: rgba(0, 255, 136, 0.2); background: #142436; }
 
@@ -447,7 +447,7 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   padding: 1.5rem 1.6rem;
-  transition: border-color 0.22s, background 0.22s;
+  transition: border-color 0.18s, background 0.25s;
 }
 .exp-card:hover { border-color: rgba(0, 255, 136, 0.13); background: #142436; }
 
@@ -569,6 +569,13 @@ h2 {
   background: rgba(0, 255, 136, 0.06);
 }
 .project-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.project-link--soon {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+  font-style: italic;
+}
 
 .podium {
   display: grid;

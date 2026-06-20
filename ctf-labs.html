@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="ctf-labs.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23030a14'/><text x='16' y='21' font-family='monospace' font-size='13' font-weight='bold' fill='%2300ff88' text-anchor='middle'>ME</text></svg>">
 </head>
 <body>
 
@@ -203,27 +204,30 @@ function closeWriteup() {
 
 function parseWriteup(text) {
   let html = '';
-  let inCodeBlock = false;
+  let inCode = false;
 
-  text.split('\n').forEach(line => {
+  for (const line of text.split('\n')) {
     if (line.startsWith('```')) {
-      html += inCodeBlock ? '</code></pre>' : '<pre><code>';
-      inCodeBlock = !inCodeBlock;
-      return;
+      html += inCode ? '</code></pre>' : '<pre><code>';
+      inCode = !inCode;
+      continue;
     }
-    if (inCodeBlock) { html += escape(line) + '\n'; return; }
+    if (inCode) { html += escape(line) + '\n'; continue; }
 
-    if (line.startsWith('### ')) {
-      html += `<h3>${escape(line.slice(4))}</h3>`;
-    } else if (line.trim() === '') {
-      html += '<br>';
-    } else {
-      html += `<p>${escape(line).replace(/`([^`]+)`/g, '<code>$1</code>')}</p>`;
+    if      (line.startsWith('### ')) html += `<h3>${escape(line.slice(4))}</h3>`;
+    else if (line.startsWith('## '))  html += `<h2>${escape(line.slice(3))}</h2>`;
+    else if (line.startsWith('# '))   html += `<h1>${escape(line.slice(2))}</h1>`;
+    else if (!line.trim())            html += '<br>';
+    else {
+      const safe = escape(line)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g,     '<em>$1</em>')
+        .replace(/`([^`]+)`/g,     '<code>$1</code>');
+      html += `<p>${safe}</p>`;
     }
-  });
+  }
 
-  if (inCodeBlock) html += '</code></pre>';
-
+  if (inCode) html += '</code></pre>';
   return html;
 }
 
@@ -245,6 +249,8 @@ const mainNav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
   mainNav.classList.toggle('scrolled', window.scrollY > 60);
 });
+
+document.getElementById('ctf-grid').innerHTML = '<p class="load-msg">loading writeups…</p>';
 
 fetch('/api/writeups')
   .then(r => r.json())
