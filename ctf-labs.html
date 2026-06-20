@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<nav>
+<nav id="main-nav" role="navigation" aria-label="Main">
   <a href="index.html" class="brand">
     <span class="bracket">[</span><span class="name">M.E</span><span class="bracket">]</span>
   </a>
@@ -102,7 +102,6 @@ function getFiltered() {
   return writeups.filter(w => {
     const matchesCat = activeCategory === 'all' || w.cat === activeCategory;
     const q = searchQuery.toLowerCase();
-    // checking all text fields so you can search "ncae" and find stuff by competition name
     const matchesSearch = !q || [w.title, w.comp, w.desc, w.cat].some(f => (f || '').toLowerCase().includes(q));
     return matchesCat && matchesSearch;
   });
@@ -240,6 +239,11 @@ navMenu.querySelectorAll('a').forEach(a => {
 
 document.addEventListener('click', e => {
   if (!e.target.closest('nav')) navMenu.classList.remove('open');
+});
+
+const mainNav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
 fetch('/api/writeups')
