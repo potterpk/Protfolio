@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #0d0d0b;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #ede8df;
+      position: relative;
+    }
+
+    /* subtle noise texture via layered gradients */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201, 152, 74, 0.06), transparent 60%),
+        radial-gradient(ellipse 40% 50% at 0% 100%, rgba(127, 179, 200, 0.04), transparent 55%);
+      pointer-events: none;
+    }
+
+    /* left amber bar */
+    .bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #c9984a, rgba(201, 152, 74, 0.1));
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      padding: 64px 80px 60px 84px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* top row */
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #4a4438;
+      letter-spacing: 0.08em;
+    }
+
+    .avail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #8a7d6e;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.02);
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+    }
+
+    /* middle */
+    .middle { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 20px 0; }
+
+    h1 {
+      font-size: 88px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+    }
+    h1 .first { color: #ede8df; }
+    h1 .last  { color: #c9984a; }
+
+    .role {
+      font-size: 18px;
+      color: #8a7d6e;
+      margin-bottom: 36px;
+      letter-spacing: 0.01em;
+    }
+
+    .pills {
+      display: flex;
+      gap: 10px;
+    }
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      padding: 6px 14px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #8a7d6e;
+      background: rgba(255,255,255,0.025);
+    }
+    .pill.amber {
+      border-color: rgba(201,152,74,0.28);
+      color: #c9984a;
+      background: rgba(201,152,74,0.07);
+    }
+    .pill.blue {
+      border-color: rgba(127,179,200,0.25);
+      color: #7fb3c8;
+      background: rgba(127,179,200,0.06);
+    }
+
+    /* bottom */
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 40px;
+    }
+    .stat { }
+    .stat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      color: #c9984a;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #4a4438;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .domain {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #4a4438;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar"></div>
+  <div class="inner">
+    <div class="top">
+      <span class="brand">muhammadessa.com</span>
+      <div class="avail">
+        <div class="dot"></div>
+        Available for Opportunities
+      </div>
+    </div>
+
+    <div class="middle">
+      <h1>
+        <span class="first">Muhammad</span>
+        <span class="last">Essa</span>
+      </h1>
+      <p class="role">Cyber Ops @ DSU &nbsp;/&nbsp; CTF Competitor &nbsp;/&nbsp; K-12 Educator</p>
+      <div class="pills">
+        <span class="pill amber">Binary Exploitation</span>
+        <span class="pill amber">Reverse Engineering</span>
+        <span class="pill blue">Network Security</span>
+        <span class="pill">Digital Forensics</span>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">CTFs Entered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1st</div>
+          <div class="stat-label">NCAE Regionals NW</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3rd</div>
+          <div class="stat-label">NCAE Cyber Games</div>
+        </div>
+      </div>
+      <div class="domain">Dakota State University</div>
+    </div>
+  </div>
+</body>
+</html>
