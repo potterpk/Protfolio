@@ -128,28 +128,19 @@ function renderGrid() {
   grid.innerHTML = '';
 
   if (!list.length) {
-    if (fetchFailed) {
-      grid.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-badge">[ error ]</div>
-          <h3>Couldn't connect</h3>
-          <p>Server isn't responding. Start it with <code>node server/index.js</code> and refresh.</p>
-        </div>`;
-    } else {
-      grid.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-badge">[ 0 writeups ]</div>
-          <h3>Coming Soon</h3>
-          <p>CTF writeups and challenge breakdowns will appear here after each competition. Check back after the next event.</p>
-          <div class="upcoming-events">
-            <span>HTB Binary Badlands</span>
-            <span>NCAE Cyber Games</span>
-            <span>Dakota Con CTF</span>
-            <span>CyberBay CTF</span>
-            <span>DSU vs. WGU CTF</span>
-          </div>
-        </div>`;
-    }
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-badge">[ 0 writeups ]</div>
+        <h3>Coming Soon</h3>
+        <p>Writeups get posted after each competition. Check back soon.</p>
+        <div class="upcoming-events">
+          <span>HTB Binary Badlands</span>
+          <span>NCAE Cyber Games</span>
+          <span>Dakota Con CTF</span>
+          <span>CyberBay CTF</span>
+          <span>DSU vs. WGU CTF</span>
+        </div>
+      </div>`;
     return;
   }
 
