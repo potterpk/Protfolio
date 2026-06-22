@@ -378,6 +378,7 @@ h2 {
 .edu-card .school { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
 .edu-card .degree { font-size: 0.84rem; color: var(--cyan); margin-bottom: 0.18rem; }
 .edu-card .dates  { font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--faint); }
+.edu-card .gpa    { font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--faint); margin-top: 0.18rem; }
 
 /* about photo */
 .about-right {
